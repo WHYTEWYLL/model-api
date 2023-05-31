@@ -1,11 +1,12 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS, cross_origin
+
 
 app = Flask(__name__)
 CORS(app)
 
 import os
 from dotenv import load_dotenv
-from flask_cors import CORS, cross_origin
 
 from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.chat_models import ChatOpenAI
