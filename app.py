@@ -1,17 +1,20 @@
-from flask import Flask, request, jsonify
+import os
+
+from dotenv import load_dotenv
+from flask import Flask, jsonify, request
 from flask_cors import CORS, cross_origin
 
+from langchain.chains import ConversationalRetrievalChain
+from langchain.chat_models import ChatOpenAI
+from langchain.embeddings.openai import OpenAIEmbeddings
+from langchain.vectorstores import DeepLake
 
 app = Flask(__name__)
-CORS(app)
+cors = CORS(app, allow_headers=["Origin", "X-Requested-With", "Content-Type", "Accept"])
 
-import os
-from dotenv import load_dotenv
 
-from langchain.embeddings.openai import OpenAIEmbeddings
-from langchain.chat_models import ChatOpenAI
-from langchain.chains import ConversationalRetrievalChain
-from langchain.vectorstores import DeepLake
+app.config["CORS_HEADERS"] = "Content-Type"
+
 
 load_dotenv()
 
