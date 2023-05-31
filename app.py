@@ -10,6 +10,7 @@ from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.vectorstores import DeepLake
 
 app = Flask(__name__)
+app.config["TIMEOUT"] = 300
 cors = CORS(app, allow_headers=["Origin", "X-Requested-With", "Content-Type", "Accept"])
 
 
@@ -78,3 +79,4 @@ def index():
 
 if __name__ == "__main__":
     app.run()
+    app.com
